@@ -46,11 +46,13 @@ class Blog extends CI_Controller {
 		if ($_FILES) {
 			$configs['upload_path'] = './assets/upload/blogimg/';
 			$configs['allowed_types'] = 'gif|jpeg|jpg|png';
-			//$configs['file_name'] = date('YmdHis') . '-' . $_FILES['imagem']['name'];
+			$configs['file_name'] = date('YmdHis').'-'.$_FILES['imagem']['name'];
 			$this->load->library('upload', $configs);
 			if (!$this->upload->do_upload('imagem')) {
-				//$erro = 
-				echo '<br>';
+				//echo '<pre>';
+				//print_r($_FILES);
+				//print_r($configs);
+				//die();
 				die('ERRO');
 			} else {
 				//$dados = ['dados' => $this->upload->data()];
@@ -111,7 +113,7 @@ class Blog extends CI_Controller {
 		if ($_FILES['imagem']['size']) {
 			$configs['upload_path'] = './assets/upload/blogimg/';
 			$configs['allowed_types'] = 'gif|jpeg|jpg|png';
-			//$configs['file_name'] = date('YmdHis') . '-' . $_FILES['imagem']['name'];
+			$configs['file_name'] = date('YmdHis').'-'.$_FILES['imagem']['name'];
 			$this->load->library('upload', $configs);
 			if (!$this->upload->do_upload('imagem')) {
 				//$erro = 
