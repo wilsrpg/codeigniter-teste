@@ -1,15 +1,15 @@
 <?php
-$end_dashboard = base_url().'admin/dashboard';
-$end_viewblog = base_url().'admin/blog';
-$end_addblog = base_url().'admin/blog/addblog';
+$end_pagina_inicial = base_url().'admin/pagina_inicial';
+$end_lista = base_url().'admin/blog';
+$end_novo = base_url().'admin/blog/novo';
 $pagina_atual = base_url().uri_string();
 $pagina_ativa = '';
-if ($pagina_atual == $end_dashboard)
-  $pagina_ativa = 'Dashboard';
-if ($pagina_atual == $end_viewblog)
-  $pagina_ativa = 'View blog';
-if ($pagina_atual == $end_addblog)
-  $pagina_ativa = 'Add blog';
+if ($pagina_atual == $end_pagina_inicial)
+  $pagina_ativa = 'Página inicial';
+if ($pagina_atual == $end_lista)
+  $pagina_ativa = 'Todas as postagens';
+if ($pagina_atual == $end_novo)
+  $pagina_ativa = 'Nova postagem';
 ?>
 
 <!doctype html>
@@ -28,11 +28,11 @@ if ($pagina_atual == $end_addblog)
   
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="dashboard">Company name</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?= $end_pagina_inicial?>">Company name</a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="<?=base_url().'admin/'?>logout">Sign out</a>
+          <a class="nav-link" href="<?=base_url().'admin/'?>sair">Sign out</a>
         </li>
       </ul>
     </nav>
@@ -43,25 +43,25 @@ if ($pagina_atual == $end_addblog)
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link <?php if ($pagina_ativa == 'Dashboard') echo 'active'; ?>"
-                  href="<?= $end_dashboard?>">
+                <a class="nav-link <?php if ($pagina_ativa == 'Página inicial') echo 'active'; ?>"
+                  href="<?= $end_pagina_inicial?>">
                   <span data-feather="home"></span>
-                  Dashboard
-                  <?php if ($pagina_ativa == 'Dashboard') echo '<span class="sr-only">(current)</span>'; ?>
+                  Página inicial
+                  <?php if ($pagina_ativa == 'Página inicial') echo '<span class="sr-only">(current)</span>'; ?>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link <?php if ($pagina_ativa == 'Add blog') echo 'active'; ?>"
-                  href="<?= $end_addblog?>">
+                <a class="nav-link <?php if ($pagina_ativa == 'Nova postagem') echo 'active'; ?>"
+                  href="<?= $end_novo?>">
                   <span data-feather="file"></span>
-                  Add Blog
+                  Nova postagem
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link <?php if ($pagina_ativa == 'View blog') echo 'active'; ?>"
-                  href="<?= $end_viewblog?>">
+                <a class="nav-link <?php if ($pagina_ativa == 'Todas as postagens') echo 'active'; ?>"
+                  href="<?= $end_lista?>">
                   <span data-feather="shopping-cart"></span>
-                  View Blog
+                  Todas as postagens
                 </a>
               </li>
             </ul>

@@ -1,9 +1,9 @@
-<?php $this->load->view('adminpanel/header');?>
+<?php $this->load->view('adminpanel/cabecalho');?>
 <!--<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css" />-->
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
   <h2>Novo blog</h2>
-  <form action="<?= base_url().'admin/blog/addblog_post' ?>" method="post" enctype="multipart/form-data">
+  <form action="<?= base_url().'admin/blog/criar' ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
       <input class="form-control" type="text" name="titulo" placeholder="Nome do blog">
     </div>
@@ -22,7 +22,7 @@
   </form>
 </main>
 
-<?php $this->load->view('adminpanel/footer');?>
+<?php $this->load->view('adminpanel/rodape');?>
 
 <!--<script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.umd.js"></script>
 

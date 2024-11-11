@@ -1,8 +1,8 @@
-<?php $this->load->view('adminpanel/header');?>
+<?php $this->load->view('adminpanel/cabecalho');?>
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-  <h2>View blog</h2>
+  <h2>Todas as postagens</h2>
 
   <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -44,7 +44,7 @@
   </div>
 </main>
 
-<?php $this->load->view('adminpanel/footer');?>
+<?php $this->load->view('adminpanel/rodape');?>
 
 <script>
   function editar(id) {

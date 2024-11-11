@@ -8,10 +8,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.4/examples/sign-in/signin.css">
-    <title>Login</title>
+    <title>Entrar</title>
   </head>
   <body>
-    <form class="form-signin" action="login/login_post" method="POST">
+    <form class="form-signin" action="entrar/autenticar" method="POST">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">

@@ -28,21 +28,21 @@ class Blog extends CI_Controller {
 		//echo "<pre>";
 		//print_r($blogs);
 		//die();
-		$this->load->view('adminpanel/viewblog', ['blogs' => $blogs]);
+		$this->load->view('adminpanel/lista', ['blogs' => $blogs]);
 	}
 
-	public function addblog()
+	public function novo()
 	{
-		$this->load->view('adminpanel/addblog');
+		$this->load->view('adminpanel/novo');
 	}
 
-	public function addblog_post()
+	public function criar()
 	{
 		//echo '<pre>';
 		//print_r($_POST);
 		//print_r($_FILES);
 		//die();
-		//$this->load->view('adminpanel/addblog');
+		//$this->load->view('adminpanel/novo');
 		if ($_FILES) {
 			$configs['upload_path'] = './assets/upload/blogimg/';
 			$configs['allowed_types'] = 'gif|jpeg|jpg|png';
@@ -96,7 +96,7 @@ class Blog extends CI_Controller {
 			'descricao' => $res['descricao_do_blog'],
 			'nome_da_imagem' => $res['nome_da_imagem_do_blog']
 		];
-		$this->load->view('adminpanel/editblog', $blog);
+		$this->load->view('adminpanel/editar', $blog);
 	}
 
 	public function salvar($id)
@@ -186,5 +186,20 @@ class Blog extends CI_Controller {
 		else
 			$this->session->set_flashdata(['despublicou' => false]);
 		redirect('admin/blog');
+	}
+
+	public function ver($id) {
+		$apiVersion = new ServerApi(ServerApi::V1);
+		$mongo = new MongoDB\Client($_ENV['DB_CONN'], [], ['serverApi' => $apiVersion]);
+		$res = $mongo->tutorial_miniblog->blogs->findOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
+		//echo '<pre>';
+		//print_r($res);die();
+		$blog = [
+			'id' => $res['_id'],
+			'titulo' => $res['titulo_do_blog'],
+			'descricao' => $res['descricao_do_blog'],
+			'nome_da_imagem' => $res['nome_da_imagem_do_blog']
+		];
+		$this->load->view('adminpanel/blog', ['blog' => $blog]);
 	}
 }

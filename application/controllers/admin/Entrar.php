@@ -8,7 +8,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../../..');
 $dotenv->load();
 //ob_start();
 
-class Login extends CI_Controller {
+class Entrar extends CI_Controller {
 	public function index()
 	{
 		$variaveis = [];
@@ -17,12 +17,12 @@ class Login extends CI_Controller {
 //echo $_SESSION['erro'];die();
 //echo $variaveis['erro'];die();
 		if (isset($_SESSION['id_do_usuario']))
-			redirect('admin/dashboard');
+			redirect('admin/pagina_inicial');
 		else
-			$this->load->view('adminpanel/loginview', $variaveis);
+			$this->load->view('adminpanel/entrar', $variaveis);
 	}
 
-	public function login_post()
+	public function autenticar()
 	{
 		// Specify Stable API version 1
 		$apiVersion = new ServerApi(ServerApi::V1);
@@ -48,10 +48,10 @@ class Login extends CI_Controller {
 		if ($usuario) {
 			//echo $usuario->_id;
 			$this->session->set_userdata('id_do_usuario', $usuario->_id);
-			redirect('admin/dashboard');
+			redirect('admin/pagina_inicial');
 		} else {
 			$this->session->set_flashdata('erro', 'Email ou senha incorreto.');
-			redirect('admin/login');
+			redirect('admin/entrar');
 		}
 		//$result2 = $client->tutorial_miniblog->listCollections();
 
@@ -77,10 +77,11 @@ class Login extends CI_Controller {
 		//else
 		//	die('Formulário vazio.');
 	}
-	public function logout()
+
+	public function sair()
 	{
 		session_destroy();
-		$this->load->view('adminpanel/loginview');
-		redirect('admin/login');
+		//$this->load->view('adminpanel/entrar');
+		redirect('admin/entrar');
 	}
 }
