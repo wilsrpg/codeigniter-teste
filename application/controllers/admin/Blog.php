@@ -147,9 +147,16 @@ class Blog extends CI_Controller {
 		//echo 'excluindo '.$id;
 		$apiVersion = new ServerApi(ServerApi::V1);
 		$mongo = new MongoDB\Client($_ENV['DB_CONN'], [], ['serverApi' => $apiVersion]);
+		$imagem = $mongo->tutorial_miniblog->blogs->findOne(['_id' => new MongoDB\BSON\ObjectId($id)])['nome_da_imagem_do_blog'];
+		//echo '<pre>';
+		//print_r($imagem);
+		//die();
 		$res = $mongo->tutorial_miniblog->blogs->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
 		//print_r($mongo->tutorial_miniblog->blogs->findOne(['nome_da_imagem_do_blog' => $this->upload->data()['file_name']]));
 		if ($res->getDeletedCount() > 0) {
+			$excluiu_arquivo = unlink('./assets/upload/blogimg/'.$imagem);
+			//if (!$excluiu_arquivo)
+			//	$this->session->set_flashdata(['nao_excluiu_arquivo' => true]);
 			$this->session->set_flashdata(['excluiu' => true]);
 			redirect('admin/blog');
 		} else {
