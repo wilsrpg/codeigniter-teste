@@ -24,7 +24,7 @@
       </div>
       <?php
         if (isset($erro))
-          echo '<p>'.$erro.'</p>';
+          echo '<p style="color:red">'.$erro.' (t@st.e, 123)</p>';
       ?>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
